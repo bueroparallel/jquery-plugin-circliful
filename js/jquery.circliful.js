@@ -425,6 +425,12 @@
                                 '<tspan class="percent">' + (settings.noPercentageSign || settings.replacePercentageByText !== null ? '' : '%') + '</tspan>' +
                                 '</text>')
                         );
+                    
+                    // re-calc viewbox on first circle dimensions
+					var svg = circleContainer.find("svg")[0];
+					var bbox = svg.getBBox();
+					var viewBox = [bbox.x, bbox.y, bbox.width, bbox.height].join(" ");
+					svg.setAttribute("viewBox", viewBox);
                 }
             }
 
